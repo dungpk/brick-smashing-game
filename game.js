@@ -2,6 +2,7 @@ let canvas = document.getElementById('game');
 let context = canvas.getContext('2d');
 
 let x=20,y=20;
+let dx=1,dy=1;
 function drawBall()
 {
     context.beginPath()
@@ -10,12 +11,13 @@ function drawBall()
     context.fill();
     context.closePath();
 }
-drawBall();
-setInterval(function (){
+
+
+function draw(){
     context.clearRect(0,0,canvas.clientWidth,canvas.clientHeight)
     drawBall();
-    x+=1;
-    y+=1;
+    x+=dx;y+=dy;
+    requestAnimationFrame(draw);
+}
 
-},1);
-
+draw();
