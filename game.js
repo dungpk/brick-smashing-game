@@ -95,10 +95,23 @@ function handleGameOver(){
     document.write("Game Over")
 }
 
+function drawBricks(){
+    for(let i=0;i<3;i++){
+        for(let j=0;j<5;j++){
+            context.beginPath();
+            context.fillStyle = 'blue'
+            context.rect(25+j*(70+25),25+i*(15+25),70,15);
+            context.fill();
+            context.closePath();
+        }
+    }
+}
+
 function draw(){
 
     if(!isGameOver) {
         context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight)
+        drawBricks();
         drawBall();
         drawPaddle();
         updatePaddlePosition();
